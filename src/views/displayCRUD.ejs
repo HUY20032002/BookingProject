@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get CRUD</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+    <div class="text-center mb-8">
+        <h1
+            class="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            Table
+        </h1>
+    </div>
+    <div class="w-full  bg-white p-6">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead
+                    class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Email
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Full Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Last Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Address
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Gender
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i < dataTable.length; i++) { %>
+                        <tr class="text-center">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <%= dataTable[i].email %>
+                            </th>
+                            <td class="px-6 py-4 text-gray-900">
+                                <%= dataTable[i].firstName %>
+                            </td>
+                            <td class="px-6 py-4 text-gray-900">
+                                <%= dataTable[i].lastName %>
+                            </td>
+                            <td class="px-6 py-4 text-gray-900">
+                                <%= dataTable[i].address %>
+                            </td>
+                            <td class="px-6 py-4 text-gray-900">
+                                <% if (dataTable[i].gender===1) { %>
+                                    Male
+                                    <% } else if (dataTable[i].gender===0) { %>
+                                        Female
+                                        <% } %>
+                            </td>
+                            <td class="px-6 py-4 text-gray-900 flex ">
+
+                                <a href="/edit-crud?id=<%= dataTable[i].id %>"
+                                    class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+
+                                <a href="/delete-crud?id=<%= dataTable[i].id %>"
+                                    class="px-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+
+
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
