@@ -70,6 +70,9 @@ let getAllUsers = (userId) => {
                 users = await db.User.findOne({
                     where : {
                         id : userId
+                    },
+                    attributes: {
+                        exclude: ['password']
                     }
                 })
             }

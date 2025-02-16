@@ -18,9 +18,9 @@ let userData = await UserService.handleUserLogin(email,password);
 }
 let handleGetAllUser = async (req, res) => {
  
-        let id = req.body.id; //ALL,Single    
+        let id = req.query.id; //ALL,Single    
         let users = await UserService.getAllUsers(id);
-console.log(users)
+        console.log(users)
         return res.status(200).json({
             errCode: 0,
             errMessage: 'OK',
